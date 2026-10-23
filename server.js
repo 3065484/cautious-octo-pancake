@@ -1,10 +1,8 @@
-
 const express = require('express');
 const path = require('path');
 const app = express();
 
 app.use(express.json({ limit: '1kb' }));
-// 关键代码：让服务器能正确加载 public 文件夹里的网页和样式
 app.use(express.static(path.join(__dirname, 'public')));
 
 let totalPigs = 0;
