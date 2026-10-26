@@ -60,15 +60,13 @@ body {
 
 #game {
   display: block;
-  width: 320px;
-  height: 480px;
-  max-width: calc(100vw - 12px);
+  width: min(320px, calc(100vw - 12px));
+  height: auto;
   max-height: calc(100vh - 12px);
   aspect-ratio: 320 / 480;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   object-fit: contain;
-  transform-origin: center center;
 }
 
 #scanlines {
