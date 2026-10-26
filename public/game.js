@@ -151,7 +151,9 @@
   }
 
   function stackTopY() {
-    return basket.y - stacked.length * PIG_H;
+    // Keep the landing plane fixed at the basket rim so the stack height does not
+    // shrink the catch area and create a hard cap around 23 pigs.
+    return basket.y - PIG_H;
   }
 
   function catchPig() {
