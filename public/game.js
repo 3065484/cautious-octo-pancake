@@ -164,7 +164,7 @@
     falling = {
       x: Math.floor(Math.random() * (W - PIG_W)),
       y: -PIG_H,
-      vy: 2.0 + Math.min(3.2, score * 0.045),
+      vy: 1.5 + Math.min(3.0, score * 0.030),
     };
   }
 
