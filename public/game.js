@@ -41,6 +41,24 @@
   let flushing = false;
   let rafId = 0;
 
+  function resizeCanvas() {
+    const padding = 12;
+    const maxW = Math.max(0, window.innerWidth - padding);
+    const maxH = Math.max(0, window.innerHeight - padding);
+    const ratio = W / H;
+    let width = maxW;
+    let height = maxH;
+
+    if (width / height > ratio) {
+      width = height * ratio;
+    } else {
+      height = width / ratio;
+    }
+
+    canvas.style.width = `${Math.floor(width)}px`;
+    canvas.style.height = `${Math.floor(height)}px`;
+  }
+
   function loadPending() {
     const raw = localStorage.getItem(STORAGE_KEY);
     const n = Number.parseInt(raw, 10);
@@ -151,8 +169,6 @@
   }
 
   function stackTopY() {
-    // Keep the landing plane fixed at the basket rim so the stack height does not
-    // shrink the catch area and create a hard cap around 23 pigs.
     return basket.y - PIG_H;
   }
 
@@ -351,6 +367,9 @@
       savePending();
     }
   });
+
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
 
   loadPending();
   renderGlobalStats();
